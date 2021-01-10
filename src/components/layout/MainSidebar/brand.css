@@ -1,0 +1,37 @@
+.title-brand{
+    position: absolute;
+width: 198px;
+
+left: 4px;
+top: 19px;
+
+font-family: Lato;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 43px;
+display: flex;
+align-items: center;
+letter-spacing: 0.12em;
+
+color: #000000;
+}
+.inner-txt{
+    /* とくてん */
+
+margin: 3rem;
+position: absolute;
+font-family: Lato;
+font-style: normal;
+font-weight: 900;
+font-size: 20px;
+line-height: 24px;
+/* identical to box height */
+display: flex;
+align-items: center;
+letter-spacing: 0.12em;
+
+color: #4E5776;
+
+
+}
