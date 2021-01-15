@@ -35,7 +35,7 @@ class SidebarNavItems extends React.Component {
     const { navItems: items } = this.state;
     return (
       this.props.activestat===false? null:
-      <div className="nav-wrapper" style ={{backgroundColor:"black"}}>
+      <div className="nav-wrapper" style ={{backgroundColor:this.props.bank?"#076AC3":"black"}}>
         <Nav className="nav--no-borders flex-column">
           {items.map((item, idx) => (
             <SidebarNavItem key={idx} item={item} />

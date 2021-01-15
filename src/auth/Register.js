@@ -5,7 +5,7 @@ import {
   Grid,
   Header,
   Message,
-  Segment
+  Segment,Label,Radio
 } from "semantic-ui-react";
 
 import { NavLink} from "react-router-dom";
@@ -14,10 +14,12 @@ import 'semantic-ui-css/semantic.min.css'
 
 class RegisterForm extends React.Component {
   state = {
-    username:"",
+    firstname:"",
     email: "",
     password1: "",
-    password2:"",
+    lastname:"",
+    Merchant:"",
+    Bank:"",
   };
 
   handleChange = e => {
@@ -29,9 +31,17 @@ class RegisterForm extends React.Component {
   
   
   };
+  handleChang = (e, { value }) => {
+    this.setState({
+        [e.target.id]: e.target.value
+    })
+
+    this.setState({ value })
+};
+
 
   render() {
-    const {username, email, password1,password2 } = this.state;
+    const {firstname, email, password1,lastname} = this.state;
    
 
     return (
@@ -52,12 +62,22 @@ class RegisterForm extends React.Component {
               <Segment stacked>
               <Form.Input
                   onChange={this.handleChange}
-                  value={username}
-                  name="username"
+                  value={firstname}
+                  name="firstname"
                   fluid
                   icon="user"
                   iconPosition="left"
-                  placeholder="username"
+                  placeholder="firstname"
+                 
+                />
+                   <Form.Input
+                  onChange={this.handleChange}
+                  value={lastname}
+                  name="lastname"
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="re enter password"
+                  type="text"
                  
                 />
                 <Form.Input
@@ -81,16 +101,33 @@ class RegisterForm extends React.Component {
                   type="password"
                
                 />
-                  <Form.Input
-                  onChange={this.handleChange}
-                  value={password2}
-                  name="password2"
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="re enter password"
-                  type="password"
-                 
-                />
+               
+               <Form.Field>
+                                                <Label color="black" for="radioGroup">Merchant</Label>
+                                                <br />
+                                                <Radio
+
+                                                    name='radioGroup'
+                                                    value='Merchant'
+                                                    style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
+
+                                                    checked={this.state.value === 'Merchant'}
+                                                    onChange={this.handleChang}
+                                                />
+                                            </Form.Field>
+                                            <Form.Field>
+                                                <Label color="black" for="radioGroup">Bank</Label>
+                                                <br />
+                                                <Radio
+
+                                                    name='radioGroup'
+
+                                                    value='Bank'
+                                                    style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
+                                                    checked={this.state.value === 'Bank'}
+                                                    onChange={this.handleChang}
+                                                />
+                                            </Form.Field>
  <Button
                   style={{ backgroundColor: "black", color: "white",borderRadius:"1rem" }}
                   fluid
@@ -117,8 +154,8 @@ class RegisterForm extends React.Component {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" style={{ color: "black" }} textAlign="center">
-           Register  your account
+        <Header as="h2" style={{ color: "black" }} textAlign="center">
+           Register your account
           </Header>
           
 
@@ -127,12 +164,22 @@ class RegisterForm extends React.Component {
               <Segment stacked>
               <Form.Input
                   onChange={this.handleChange}
-                  value={username}
-                  name="username"
+                  value={firstname}
+                  name="firstname"
                   fluid
                   icon="user"
                   iconPosition="left"
-                  placeholder="username"
+                  placeholder="firstname"
+                 
+                />
+                   <Form.Input
+                  onChange={this.handleChange}
+                  value={lastname}
+                  name="lastname"
+                  icon="user"
+                  iconPosition="left"
+                  placeholder="re enter password"
+                  type="text"
                  
                 />
                 <Form.Input
@@ -156,18 +203,34 @@ class RegisterForm extends React.Component {
                   type="password"
                
                 />
-                  <Form.Input
-                  onChange={this.handleChange}
-                  value={password2}
-                  name="password2"
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="re enter password"
-                  type="password"
-                 
-                />
+               
+               <Form.Field>
+                                                <Label color="black" for="radioGroup">Merchant</Label>
+                                                <br />
+                                                <Radio
 
-                <Button
+                                                    name='radioGroup'
+                                                    value='Merchant'
+                                                    style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
+
+                                                    checked={this.state.value === 'Merchant'}
+                                                    onChange={this.handleChang}
+                                                />
+                                            </Form.Field>
+                                            <Form.Field>
+                                                <Label color="black" for="radioGroup">Bank</Label>
+                                                <br />
+                                                <Radio
+
+                                                    name='radioGroup'
+
+                                                    value='Bank'
+                                                    style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
+                                                    checked={this.state.value === 'Bank'}
+                                                    onChange={this.handleChang}
+                                                />
+                                            </Form.Field>
+ <Button
                   style={{ backgroundColor: "black", color: "white",borderRadius:"1rem" }}
                   fluid
                   size="large"
@@ -181,6 +244,7 @@ class RegisterForm extends React.Component {
             <Message style={{borderRadius:"1rem"}}>
               Already have acccount ? <NavLink to="/login">Login</NavLink>
             </Message>
+
 
 
           </React.Fragment>

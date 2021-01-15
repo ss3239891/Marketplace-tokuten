@@ -21,7 +21,7 @@ class SidebarMainNavbar extends React.Component {
   render() {
     
     return (
-      <div className="main-navbar">
+      <div className="main-navbar" >
         <Navbar
           className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0"
           type="light"

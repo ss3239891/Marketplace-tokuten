@@ -2,7 +2,7 @@
     position: absolute;
 width: 198px;
 
-left: 4px;
+left: 13px;
 top: 19px;
 
 font-family: Lato;
@@ -14,11 +14,12 @@ display: flex;
 align-items: center;
 letter-spacing: 0.12em;
 
+
 color: #000000;
 }
 .inner-txt{
     /* とくてん */
-
+    margin-left:63px;
 margin: 3rem;
 position: absolute;
 font-family: Lato;
@@ -32,6 +33,66 @@ align-items: center;
 letter-spacing: 0.12em;
 
 color: #4E5776;
+
+
+}
+.category{
+    /* Armor Fitness */
+
+position: relative;
+width: 159px;
+height: 34px;
+left: 45px;
+top: 55px;
+
+/* Headline 1 */
+font-family: 'Nunito' sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 25px;
+line-height: 34px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+}
+.category-branch{
+    /* All Branches */
+
+position: absolute;
+width: 97px;
+height: 23px;
+left: 71px;
+top: 89px;
+
+/* Body */
+font-family: 'Nunito' sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 17px;
+line-height: 23px;
+display: flex;
+align-items: center;
+letter-spacing: 0.005em;
+
+color: #FFFFFF;
+
+
+}
+.down-arrow{
+    /* Vector */
+
+position: relative;
+left:57.30%;
+right: -33.33%;
+top: 37.17%;
+bottom: -12.5%;
+cursor: pointer;
+
+
 
 
 }
