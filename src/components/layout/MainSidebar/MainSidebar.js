@@ -8,6 +8,7 @@ import SidebarSearch from "./SidebarSearch";
 import SidebarNavItems from "./SidebarNavItems";
 
 import { Store } from "../../../flux";
+import SidebarMainNavbar from "./SidebarMainNavbar";
 
 class MainSidebar extends React.Component {
   constructor(props) {
@@ -54,9 +55,11 @@ class MainSidebar extends React.Component {
         className={classes}
         lg={{ size: 2 }}
         md={{ size: 3 }}
+        style={{top:this.props.activestate===false?"1px":"108px",overflow:this.props.activestate?null:"hidden"}}
       >
         
         <SidebarSearch />
+        {this.props.activestate=== false? <SidebarMainNavbar activestat={this.props.activestate}></SidebarMainNavbar> :
         <div style={{height:this.state.open?"189px":"152px",width:"100%",backgroundColor:this.state.bank?"#076AC3":"black",borderBottom:"1px solid #E6E5E5"}}>
           
           <span className ="category">Armor Fitness</span>
@@ -74,6 +77,7 @@ class MainSidebar extends React.Component {
 }
 
           </div>
+  }
         <SidebarNavItems bank={this.state.bank} activestat={this.props.activestate} />
       </Col>
     );
