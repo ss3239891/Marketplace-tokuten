@@ -59,7 +59,7 @@ color: #FFFFFF;
 
 
 }
-.category-branch{
+.category-branc{
     /* All Branches */
 
 position: absolute;
@@ -67,6 +67,35 @@ width: 97px;
 height: 23px;
 left: 71px;
 top: 89px;
+
+/* Body */
+font-family: 'Nunito' sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 17px;
+line-height: 23px;
+display: flex;
+align-items: center;
+letter-spacing: 0.005em;
+
+color: #FFFFFF;
+
+
+}
+.custom-radio .custom-control-label::after {
+   background-color: #132371 !important;}
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #132371 !important;
+}
+    /* All Branches */
+.category-branch{
+    /* All Branches */
+
+position: absolute;
+width: 137px;
+height: 23px;
+left: 54px;
+top: 69px;
 
 /* Body */
 font-family: 'Nunito' sans-serif;
@@ -95,4 +124,86 @@ cursor: pointer;
 
 
 
+}
+
+
+.radio-title{
+    width: 149px;
+height: 23px;
+
+
+font-family: 'Nunito' sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 17px;
+line-height: 23px;
+display: flex;
+align-items: center;
+letter-spacing: 0.005em;
+padding-left: 4px;
+padding-top :16px ;
+margin-bottom :32px;
+
+color: #000000;
+}
+.custom-control-label {
+    margin-left: -195px;
+ margin-top: 33px;
+
+}
+.card-pose{
+    margin-top: 59px !important;
+}
+.radi{
+    padding-top: 12px;
+}
+
+
+
+
+.divider{
+    border-bottom: 2px solid #132371 !important;
+   
+    position: absolute;
+    top:53%;
+    margin-left: 60px !important;
+    width:100% !important;
+    height: 2px;
+}
+.custom-control-label::before {
+    border:1px solid black !important
+}
+
+.text-bank{
+   
+    width: 278px;
+height: 23px;
+position: absolute;
+left:327px;
+margin-top: 9px;
+z-index: 2;
+
+font-family: 'Nunito' sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 17px;
+line-height: 23px;
+display: flex;
+align-items: center;
+letter-spacing: 0.005em;
+
+color: #000000;
+}
+.custom-control{
+    margin-left: 169px;
+    font-family: 'Nunito' sans-serif !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 17px !important;
+    line-height: 23px !important;
+    
+    letter-spacing: 0.005em !important;
+    
+    color: rgba(0, 0, 0, 0.7);
+    
 }

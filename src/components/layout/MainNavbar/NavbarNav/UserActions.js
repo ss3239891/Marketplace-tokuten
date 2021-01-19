@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import firebase from "firebase"
 import {
   Dropdown,
   DropdownToggle,
@@ -9,13 +10,15 @@ import {
   NavItem,
   NavLink
 } from "shards-react";
+import rootRef from "../../../../firebase/firebase"
 
 export default class UserActions extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      visible: false
+      visible: false,
+      ownerName:"",
     };
 
     this.toggleUserActions = this.toggleUserActions.bind(this);
@@ -26,7 +29,21 @@ export default class UserActions extends React.Component {
       visible: !this.state.visible
     });
   }
+logout=()=>{
+  firebase.auth().signOut();
+}
+componentDidMount(){
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    if (firebaseUser){  rootRef.child(firebaseUser.uid).on('value', snapshot => {
+      this.setState({ ownerName : snapshot.child('first_name').val()})})}
+    else{
+      localStorage.removeItem("token");
+      window.location.href="/login"
+    }
+  }
+  )
 
+}
   render() {
     return (
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
@@ -37,7 +54,7 @@ export default class UserActions extends React.Component {
             alt="User Avatar"
             style={{width:window.innerWidth<768?"44px":null,marginTop:window.innerWidth<768?"16px":null,marginLeft:window.innerWidth<768?"55px":null}}
           />{" "}
-          <span className="d-none d-md-inline-block user-text" >Sierra Brooks</span>
+          <span className="d-none d-md-inline-block user-text" >{this.state.ownerName}</span>
           <svg className="drop" width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.666 1.6665L7.99935 8.33317L1.33268 1.6665" stroke="black" stroke-width="2"/>
 </svg>
@@ -56,7 +73,7 @@ export default class UserActions extends React.Component {
             <i className="material-icons">&#xE896;</i> Transactions
           </DropdownItem>
           <DropdownItem divider />
-          <DropdownItem tag={Link} to="/" className="text-danger">
+          <DropdownItem tag={Link} onClick={this.logout} to="logout" className="text-danger">
             <i className="material-icons text-danger">&#xE879;</i> Logout
           </DropdownItem>
         </Collapse>

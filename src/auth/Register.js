@@ -1,4 +1,6 @@
 import React from "react";
+import firebase from "firebase";
+import rootRef from "../firebase/firebase";
 import {
   Button,
   Form,
@@ -7,6 +9,7 @@ import {
   Message,
   Segment,Label,Radio
 } from "semantic-ui-react";
+
 
 import { NavLink} from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
@@ -18,32 +21,71 @@ class RegisterForm extends React.Component {
     email: "",
     password1: "",
     lastname:"",
-    Merchant:"",
-    Bank:"",
+    role:"Merchant",
+    user:"",
+    loading:false,
+    value: "Merchant"
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-  
-  
-  };
   handleChang = (e, { value }) => {
     this.setState({
-        [e.target.id]: e.target.value
+        role: e.target.value
     })
 
     this.setState({ value })
 };
 
+componentDidMount(){
+
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    console.log(firebaseUser)
+    if(firebaseUser){
+    this.setState({user:firebaseUser.uid});
+    this.postData(firebaseUser.uid);}
+  })
+}
+  postData = (data) =>{
+    this.setState({loading:true})
+    localStorage.setItem("token",true)
+    rootRef.child(data).set({
+      first_name: this.state.firstname,
+      last_name:this.state.lastname,
+      email: this.state.email,
+      role: this.state.role
+  });
+  if(this.state.role ==="Bank"){
+  
+window.location.href ="/marketplace/Bank/"
+    
+  }
+  else{
+    window.location.href ="/marketplace/rewards/"
+  }
+  this.setState({loading:false})
+}
+ networkCalling = () =>{
+
+  this.setState({loading:true})
+  const email = this.state.email;
+  const pass = this.state.password1;
+  const auth = firebase.auth();
+
+  const promise = auth.createUserWithEmailAndPassword(email, pass);
+  promise.catch(e =>this.setState({error:e.message,loading:false}));
+
+}
+
 
   render() {
     const {firstname, email, password1,lastname} = this.state;
-   
+    console.log(this.state.role)
 
+
+   
     return (
         <>
        {window.innerWidth>1390? <Grid
@@ -54,6 +96,8 @@ class RegisterForm extends React.Component {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" style={{ color: "black" }} textAlign="center">
            Register your account
+           
+           <h6 style ={{textAlign:"center",color:"red"}}>{this.state.error}</h6>
           </Header>
           
 
@@ -68,6 +112,7 @@ class RegisterForm extends React.Component {
                   icon="user"
                   iconPosition="left"
                   placeholder="firstname"
+                  id ="firstName"
                  
                 />
                    <Form.Input
@@ -76,8 +121,9 @@ class RegisterForm extends React.Component {
                   name="lastname"
                   icon="user"
                   iconPosition="left"
-                  placeholder="re enter password"
+                  placeholder="lastname"
                   type="text"
+                  id ="lastName"
                  
                 />
                 <Form.Input
@@ -88,6 +134,7 @@ class RegisterForm extends React.Component {
                   icon="mail"
                   iconPosition="left"
                   placeholder="email"
+                  id = "signupEmail"
                  
                 />
                 <Form.Input
@@ -99,6 +146,7 @@ class RegisterForm extends React.Component {
                   iconPosition="left"
                   placeholder="Password"
                   type="password"
+                  id = "signupPassword"
                
                 />
                
@@ -112,7 +160,9 @@ class RegisterForm extends React.Component {
                                                     style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
 
                                                     checked={this.state.value === 'Merchant'}
+                                                    id = "Merchant"
                                                     onChange={this.handleChang}
+                                                    required= "true"
                                                 />
                                             </Form.Field>
                                             <Form.Field>
@@ -125,14 +175,17 @@ class RegisterForm extends React.Component {
                                                     value='Bank'
                                                     style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
                                                     checked={this.state.value === 'Bank'}
+                                                    id = "Bank"
                                                     onChange={this.handleChang}
+                                                    required= "true"
                                                 />
                                             </Form.Field>
  <Button
                   style={{ backgroundColor: "black", color: "white",borderRadius:"1rem" }}
                   fluid
                   size="large"
-                
+                  onClick = {this.networkCalling}
+                loading ={this.state.loading}
                 >
                  Signup
                 </Button>
@@ -156,6 +209,8 @@ class RegisterForm extends React.Component {
         <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" style={{ color: "black" }} textAlign="center">
            Register your account
+           
+           <h6 style ={{textAlign:"center",color:"red"}}>{this.state.error}</h6>
           </Header>
           
 
@@ -178,7 +233,7 @@ class RegisterForm extends React.Component {
                   name="lastname"
                   icon="user"
                   iconPosition="left"
-                  placeholder="re enter password"
+                  placeholder="lastname"
                   type="text"
                  
                 />
@@ -214,19 +269,23 @@ class RegisterForm extends React.Component {
                                                     style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
 
                                                     checked={this.state.value === 'Merchant'}
+                                                    id = "Merchant"
                                                     onChange={this.handleChang}
+                                                    required= "true"
                                                 />
                                             </Form.Field>
                                             <Form.Field>
                                                 <Label color="black" for="radioGroup">Bank</Label>
                                                 <br />
                                                 <Radio
+                                                 required= "true"
 
                                                     name='radioGroup'
 
                                                     value='Bank'
                                                     style={{ position: "relative", left: "-72px", top: "-32px", marginTop: "8px" }}
                                                     checked={this.state.value === 'Bank'}
+                                                    id = "Bank"
                                                     onChange={this.handleChang}
                                                 />
                                             </Form.Field>
@@ -234,6 +293,7 @@ class RegisterForm extends React.Component {
                   style={{ backgroundColor: "black", color: "white",borderRadius:"1rem" }}
                   fluid
                   size="large"
+                  onClick = {this.networkCalling}
                 
                 >
                  Signup
