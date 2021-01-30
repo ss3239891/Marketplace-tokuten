@@ -12,6 +12,7 @@ import {
 } from "shards-react";
 import Slider from "react-slick";
 
+import "./create-rewards.css"
 
 
 import PageTitle from "../components/common/PageTitle";
@@ -146,11 +147,12 @@ class Rewards extends React.Component {
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
         <Row noGutters className="page-header py-4">
-          <PageTitle sm="4" title="Marketplace" className="text-sm-left title-maine" />
+          <PageTitle sm="4" title="Marketplace" className="text-sm-left title-maine " />
+         
         </Row>
-
+        <hr style={{width:'141px',border: '1px solid rgba(0, 0, 0, 0.4)',marginLeft:'2px',marginTop:'0px'}}></hr>
         {/* First Row of Posts */}
-      
+     
 
         <div>
        <h5 className="subtit">Live Rewards</h5>
@@ -171,7 +173,7 @@ class Rewards extends React.Component {
                   
                 
                 </div>
-                <CardBody style={{height:window.innerWidth<768?"126px":null,paddingTop:window.innerWidth?"2px":null}}>
+                <CardBody style={{height:window.innerWidth<768?"126px":null,paddingTop:window.innerWidth?"10px":null}}>
                   <h5 className="card-title" style={{fontSize:window.innerWidth<768?"13px":null}}>
                     <a href="#" className="text-fiord-blue">
                     1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
@@ -199,12 +201,12 @@ class Rewards extends React.Component {
         </div>
         </div>:
       <div className="maindiv" style={{display:"flex"}}>
-          <h5 style ={{fontWeight:"bold",zIndex:"2", fontSize:"25px",color:"rgba(0, 0, 0, 0.7)",position:"absolute",marginTop:"-39px",marginLeft:"38px"}}>Insights</h5>
-          <Button style={{color:"gray",backgroundColor:"white",borderRadius:"20px",borderColor:"gray",position:"absolute",marginTop:"-48px",marginLeft:"142px",fontWeight:"700",fontSize:"0.7rem"}}><b>+</b> View All</Button>
+          <h5 style ={{fontFamily:'Nunito',fontWeight:"bold",zIndex:"2", fontSize:"25px",color:"rgba(0, 0, 0, 0.7)",position:"absolute",marginTop:"-39px",marginLeft:"38px"}}>Insights</h5>
+          <Button style={{fontFamily:'Nunito',color:"gray",backgroundColor:"white",borderRadius:"20px",borderColor:"gray",position:"absolute",marginTop:"-48px",marginLeft:"142px",fontWeight:"700",fontSize:"0.7rem"}}><b>+</b> View All</Button>
             <div className="subdiv1" style={{borderRadius:"20px",border:"1px solid #c4C4c4",height:"540px"}}>
               
             </div>
-            <h5 style ={{fontWeight:"bold",zIndex:"2",fontSize:"25px",color:"rgba(0, 0, 0, 0.7)",position:"absolute",marginTop:"-39px",right:"0px",marginRight:"32%"}}>Recommendations</h5>
+            <h5 style ={{fontFamily:'Nunito',fontWeight:"bold",zIndex:"2",fontSize:"25px",color:"rgba(0, 0, 0, 0.7)",position:"absolute",marginTop:"-39px",right:"0px",marginRight:"32%"}}>Recommendations</h5>
             <div className="subdiv2" style={{dispaly:"block",marginLeft:"24px"}} >
            <div className="subdivchild1" style={{width:"100%",height:"251px" ,border:"1px solid #c4C4c4",borderRadius:"20px"}}></div>
            <div className="subdivchild2" style={{width:"100%",height:"273px",marginTop:"12px",border:"1px solid #c4C4c4",borderRadius:"20px"}}></div>

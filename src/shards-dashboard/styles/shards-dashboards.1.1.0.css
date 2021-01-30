@@ -1298,7 +1298,9 @@ i.material-icons {
   border-bottom-left-radius: 0; }
 
 .input-group.input-group-seamless > .form-control {
-  border-radius: 1rem; }
+  border-radius: 1rem;
+
+   }
 
 .input-group.input-group-seamless > .input-group-append,
 .input-group.input-group-seamless > .input-group-prepend {
@@ -2219,7 +2221,18 @@ color: black !important;
 
 .card-title {
   font-weight: 500;
-  margin-bottom: 0.75rem; }
+  margin-bottom: 0.75rem;
+  font-style: normal;
+ 
+  font-size: 15px;
+  line-height: 19px;
+
+
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.005em;
+  
+  color: #2A3045; }
 
 .card-subtitle {
   margin-top: -1.09375rem; }
@@ -4191,7 +4204,9 @@ i.material-icons {
   box-shadow: none !important; }
 
 .text-fiord-blue {
-  color: #3D5170 !important; }
+  color: #2A3045 !important;
+ 
+ }
 
 a.text-fiord-blue:hover, a.text-fiord-blue:focus {
   color: #2b394f !important; }
@@ -4463,7 +4478,7 @@ color: #000000 !important;
    
     will-change: background-color, box-shadow, color;
     transition: box-shadow 200ms ease, color 200ms ease, background-color 200ms ease;
-    font-size: 0.85rem; }
+    font-size: 17px; }
   .main-sidebar .nav .nav-item .nav-link {
     border-bottom: 1px solid #e1e5eb;
     font-weight: 400;
@@ -4627,13 +4642,15 @@ margin: 10px 0px;
         .subtit{
           width: 155px;
 height: 34px;
+margin-bottom: 0rem;
 
 
-font-family: 'Nunito' sans-serif;
+font-family: 'Nunito' ;
 font-style: normal;
 font-weight: bold;
 font-size: 25px;
 line-height: 34px;
+margin-left: 10px;
 /* identical to box height */
 
 display: flex;
@@ -4643,7 +4660,7 @@ color: rgba(0, 0, 0, 0.7);
         }
 
 .page-header .page-title {
-  font-family: 'Nunito' sans-serif !important;
+  font-family: 'Nunito' !important;
   font-style: normal !important;
   font-weight: bold !important;
   font-size: 25px  !important;
@@ -4811,7 +4828,7 @@ height: 34px;
 left: 328px;
 top: 625px;
 
-font-family: Nunito;
+font-family:" Nunito";
 font-style: normal;
 font-weight: bold;
 font-size: 25px;
@@ -4825,13 +4842,19 @@ color: rgba(0, 0, 0, 0.7);
 
   }
   .text-fiord-blue{
-    font-family: 'Nunito' sans-serif;
+    font-family: 'Nunito' ;
+    font-size: 17px;
+    align-items: center;
+text-align: center;
+font-style: normal;
+font-weight: normal;
+letter-spacing: 0.005em;
   }
 
 .card-post__image {
   position: relative;
   width: 328px;
-height: 159px;
+height: 165px;
  
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;

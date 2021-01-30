@@ -6,6 +6,7 @@ import {
   InputGroupAddon,
   InputGroupText
 } from "shards-react";
+import "./brand.css"
 
 export default () => (
   <Form className="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none" style={{ display: "flex", minHeight: "45px" }}>
@@ -14,7 +15,7 @@ export default () => (
         <InputGroupText>
           <i className="material-icons">search</i>
         </InputGroupText>
-        <FormInput
+        <FormInput 
           className="navbar-search"
           placeholder="Search for something..."
           aria-label="Search"

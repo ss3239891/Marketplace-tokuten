@@ -2,7 +2,7 @@
     position: absolute;
 width: 198px;
 
-left: 13px;
+left: 40px;
 top: 19px;
 
 font-family: Lato;
@@ -19,8 +19,8 @@ color: #000000;
 }
 .inner-txt{
     /* とくてん */
-    margin-left:63px;
-margin: 3rem;
+   left:45px;
+margin: 3.5rem;
 position: absolute;
 font-family: Lato;
 font-style: normal;
@@ -42,7 +42,7 @@ color: #4E5776;
 position: relative;
 width: 159px;
 height: 34px;
-left: 45px;
+left: 57px;
 top: 55px;
 
 /* Headline 1 */
@@ -65,7 +65,7 @@ color: #FFFFFF;
 position: absolute;
 width: 97px;
 height: 23px;
-left: 71px;
+left: 77px;
 top: 89px;
 
 /* Body */
@@ -115,7 +115,7 @@ color: #FFFFFF;
     /* Vector */
 
 position: relative;
-left:57.30%;
+left:46.30%;
 right: -33.33%;
 top: 37.17%;
 bottom: -12.5%;
@@ -206,4 +206,7 @@ color: #000000;
     
     color: rgba(0, 0, 0, 0.7);
     
+}
+.navbar-search {
+    border-radius: 1rem !important;
 }

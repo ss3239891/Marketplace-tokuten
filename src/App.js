@@ -8,7 +8,6 @@ import { DefaultLayout } from "./layouts";
 import BankLayout  from "./layouts/BankLayout";
 import  LoginLayout from "./auth/loginlayout";
 
-
 import Rewards from "./views/Rewards";
 import LoginForm from "./auth/Login";
 import RegisterForm from "./auth/Register"
