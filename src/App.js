@@ -15,7 +15,7 @@ import Bank from "./views/Bank"
 import { Page1 } from "./views/create-rewards-first";
 import { Page2 } from "./views/create-rewards-2";
 import {Page3 }from "./views/create-rewards-3";
-import {Page4}from "./views/show-rewards";
+import {Page4}from "./views/create-rewards-4";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./shards-dashboard/styles/shards-dashboards.1.1.0.css";
 

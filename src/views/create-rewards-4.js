@@ -1,17 +1,20 @@
 
 import React, { Component } from 'react'
 import {
-  Radio,
+  
   Form,
 
-  Header,
+
 
   Label,
   Checkbox, Grid,
-  Input, Button,Icon
+   Button,Icon
 } from "semantic-ui-react";
 import "./create-rewards.css"
 import "typeface-nunito";
+import firebase from "firebase";
+import rootRef from "../firebase/firebase";
+import { rewardRef } from "../firebase/firebase";
 export class Page4 extends Component {
 
   state = {
@@ -19,7 +22,12 @@ export class Page4 extends Component {
     gender: "",
     Age: "",
     terms: "",
-    loyality: false
+    loyality: false,
+    ownerEmail: "",
+    ownerUid: "",
+    ownerName: "",
+    RewardObject:[],
+    Purchasemethod:""
   }
 
 
@@ -38,9 +46,63 @@ export class Page4 extends Component {
 
     this.setState({ value })
   };
-  render() {
 
-    console.log(this.state.value)
+
+  
+  sendingData = () => {
+    this.setState({ loading: true })
+    const autoRewardId = rewardRef.push().key;
+    rewardRef.child(autoRewardId).set({
+      owner_uid: this.state.ownerUid,
+      owner_name: this.state.ownerName,
+      owner_email: this.state.ownerEmail,
+      Audience: this.state.Audience,
+      gender: this.state.gender,
+      Age: this.state.Age,
+      terms: this.state.terms,
+      loyality: this.state.loyality,
+      
+      
+      
+
+
+
+    }).then(() => {
+      this.setState({ message: "Reward created successfully!" })
+      console.log("message",this.state.message)
+    });
+    this.setState({ loading: false })
+  }
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+      if (firebaseUser) {
+        console.log(firebaseUser)
+
+        rootRef.child(firebaseUser.uid).on('value', snapshot => {
+          this.setState({ ownerName: snapshot.child('first_name').val() + " " + snapshot.child('last_name').val() })
+          this.setState({ ownerEmail: snapshot.child('email').val() })
+          this.setState({ ownerUid: firebaseUser.uid });
+
+
+          rewardRef.on('value', snapshot => {
+            if (snapshot.val() != null) {
+              this.setState({
+                RewardObject: snapshot.val()
+              });
+
+            }
+
+
+          });
+
+        });
+
+      }
+
+    })
+  }
+  render() {
+console.log("purchasemethod",this.state.Purchasemethod);
     return (
       <div style={{ paddingLeft: '20px' }}>
 
@@ -49,7 +111,7 @@ export class Page4 extends Component {
         <hr style={{ width: '510px', border: '1.1px solid rgba(0, 0, 0, 0.4)', marginLeft: '25px', marginTop: '0px' }}></hr>
         <div class="ui tiny breadcrumb"  style={{marginTop:'20px',marginLeft:'20px',background:'none',fontFamily:'Nunito',fontSize:'17px'}}><div style={{fontWeight:'bold',textDecoration:'underline'}} class="section">Add Details</div><Icon style={{color:' rgba(0, 0, 0, 0.7)',width:'50px'}} aria-hidden="true" name="chevron right"/><div style={{fontWeight:'bold',textDecoration:'underline',color:'#000000',fontSize:"17px"}} class=" section">Select Parameters</div></div>
 
-        <Form onSubmit={this.handleSubmit}>
+        <Form >
 
           <div className="subdiv1" style={{marginLeft:'2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "440px", width: '95%' }}>
 
@@ -173,7 +235,7 @@ export class Page4 extends Component {
                 <Grid.Row>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="qrcode" size="huge" />
+                    <Icon onClick={() => this.setState({Purchasemethod:"QR code"})} style={{cursor:'pointer',backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="qrcode" size="huge" />
 
                       <Label className="label2" style={{background: 'none', marginTop:'20px',marginLeft:'40px'}} for="radioGroup">Qr code</Label>
                       <br />
@@ -190,7 +252,7 @@ export class Page4 extends Component {
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="code" size="huge" />
+                    <Icon onClick={() => this.setState({Purchasemethod:"QR code"})} style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="code" size="huge" />
 
                       <Label className="label2" style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'20px'}} for="radioGroup">Voucher code</Label>
                       <br />
@@ -207,7 +269,7 @@ export class Page4 extends Component {
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="calendar outline" size="huge" />
+                    <Icon onClick={() => this.setState({Purchasemethod:"Booking System"})} style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="calendar outline" size="huge" />
 
                       <Label className="label2"  style={{ marginX: "2px" }}style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'15px'}}  for="radioGroup">Booking System</Label>
                       <br />
@@ -223,7 +285,7 @@ export class Page4 extends Component {
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="linkify" size="huge" />
+                    <Icon onClick={() => this.setState({Purchasemethod:"External Link"})} style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="linkify" size="huge" />
 
                       <Label className="label2" style={{ marginX: "2px" }} style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'20px'}} for="radioGroup">External Link</Label>
                       <br />
@@ -239,7 +301,7 @@ export class Page4 extends Component {
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon style={{backgroundColor:"black" ,color:"white",borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="home" size="huge" />
+                    <Icon onClick={() => this.setState({Purchasemethod:"Merchant Shop"})} style={{backgroundColor:"black" ,color:"white",borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="home" size="huge" />
 
                       <Label className="label2"  style={{ marginX: "2px" }} style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'15px'}} for="radioGroup">Merchant Shop</Label>
                       <br />
@@ -260,7 +322,10 @@ export class Page4 extends Component {
 
         </Form>
 
-        <Button className="button" style={{ backgroundColor: 'black',color:'#FFFFFF', fontSize:'17px',fontWeight:'normal',fontStyle:'normal' ,fontFamily:'Nunito', marginLeft: '420px', width: '35%', marginTop: '80px',marginBottom:'20px',borderRadius:'10px' }}>Create Reward</Button>
+        <Button className="button" style={{ backgroundColor: 'black',color:'#FFFFFF', fontSize:'17px',fontWeight:'normal',fontStyle:'normal' ,fontFamily:'Nunito', marginLeft: '420px', width: '35%', marginTop: '80px',marginBottom:'20px',borderRadius:'10px',
+      
+      }}
+      onClick={this.sendingData}>Create Reward</Button>
 
       </div>
     )

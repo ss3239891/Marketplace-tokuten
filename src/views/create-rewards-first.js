@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Breadcrumb, Icon } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import "./create-rewards.css"
 export class Page1 extends Component {
     render() {

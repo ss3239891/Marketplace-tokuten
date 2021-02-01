@@ -16,7 +16,7 @@ export class Page2 extends Component {
                    </div>
                <div style={{marginLeft:'125px',marginTop:'90px'}}>
                   
-               <Link to ="/create-rewards-3/">
+               <Link to ="/create-rewards-3/" style={{textDecoration:'none'}}>
                     <Icon style={{backgroundColor:"#000000" ,color:"white",borderRadius:"50%",height:'120px',width:'120px',paddingTop: '3%' ,marginLeft:'5%'}} name="gift" size="huge" />
                 <Button className="scroll "style={{paddingLeft:"0.1rem",marginLeft:"1rem", marginTop:'1rem', background:'none'}}>Scroll Offer</Button></Link>
                
