@@ -113,7 +113,7 @@ console.log("purchasemethod",this.state.Purchasemethod);
 
         <Form >
 
-          <div className="subdiv1" style={{marginLeft:'2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "440px", width: '95%' }}>
+          <div className="subdiv1" style={{marginLeft:'2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "440px", width: '91%' }}>
 
 
             <Form.Field>
@@ -229,7 +229,7 @@ console.log("purchasemethod",this.state.Purchasemethod);
           <Form.Field>
 
             <p style={{marginLeft:'30px', marginTop: '30px', fontWeight: 'normal', textDecoration: 'underline',color:'#000000',fontSize:'17px' }}>Method of purchase: </p>
-            <div className="subdiv1" style={{ marginLeft:'2%',borderRadius: "20px", border: "1px solid #c4C4c4", height: "370px", width: '95%' }}>
+            <div className="subdiv1" style={{ marginLeft:'2%',borderRadius: "20px", border: "1px solid #c4C4c4", height: "370px", width: '91%' }}>
 
               <Grid columns={5} style={{ marginLeft: '20px', marginTop: '90px' }}>
                 <Grid.Row>
@@ -322,7 +322,7 @@ console.log("purchasemethod",this.state.Purchasemethod);
 
         </Form>
 
-        <Button className="button" style={{ backgroundColor: 'black',color:'#FFFFFF', fontSize:'17px',fontWeight:'normal',fontStyle:'normal' ,fontFamily:'Nunito', marginLeft: '420px', width: '35%', marginTop: '80px',marginBottom:'20px',borderRadius:'10px',
+        <Button className="button" style={{ backgroundColor: 'black',color:'#FFFFFF', fontSize:'17px',fontWeight:'normal',fontStyle:'normal' ,fontFamily:'Nunito', marginLeft: '350px', width: '35%', marginTop: '80px',marginBottom:'20px',borderRadius:'10px',
       
       }}
       onClick={this.sendingData}>Create Reward</Button>

@@ -11,7 +11,7 @@ export class Page1 extends Component {
                 <hr style={{width:'330px',border: '1px solid rgba(0, 0, 0, 0.4)',marginLeft:'45px',marginTop:'0px'}}></hr>
 
 
-                <div className="subdiv1 " style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "370px", width: '88%',marginLeft:'5%',marginBottom:'10%',marginTop:'50px' }}>
+                <div className="subdiv1 " style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "370px", width: '83%',marginLeft:'5%',marginBottom:'10%',marginTop:'50px' }}>
 
                     <u><h6 className="template"  style={{ cursor: "pointer", width: "10rem", fontWeight: "bold", color: "black", marginLeft: '40%', marginTop: '10%' }}> Use Template </h6></u>
                     <br />

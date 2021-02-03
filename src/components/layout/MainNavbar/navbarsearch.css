@@ -1,0 +1,11 @@
+::placeholder {
+/* text-align: center; */
+font-family: 'Nunito', sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 15px;
+line-height: 23px;
+display: flex;
+align-items: center;
+letter-spacing: 0.005em;
+  }

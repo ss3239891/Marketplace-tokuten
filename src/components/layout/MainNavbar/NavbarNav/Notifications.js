@@ -20,7 +20,7 @@ export default class Notifications extends React.Component {
 
   render() {
     return (
-      <NavItem  style ={{display:"flex",margin:"1rem",marginLeft: window.innerWidth<768?"-13px":null}}className="border-right dropdown notifications">
+      <NavItem  style ={{display:"flex",marginTop:"1.5rem",marginLeft: window.innerWidth<768?"-13px":null}}className="border-right dropdown notifications">
         <NavLink
           className="nav-link-icon text-center"
           onClick={this.toggleNotifications}

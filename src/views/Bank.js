@@ -86,6 +86,7 @@ class Bank extends React.Component {
  
 };
 }
+
     render() {
       const {
         PostsListOne,
@@ -133,6 +134,7 @@ class Bank extends React.Component {
           }
         ]
       };
+
         return (
             <Container style={{backgroundColor:"#e5e5e5" }}fluid className="main-content-container px-4">
             {/* Page Header */}
