@@ -72,9 +72,9 @@ class MainSidebar extends React.Component {
 
             {this.state.open ?
               <>
-                <Link to="/marketplace/bank/"><span onClick={() => { this.setState({ bank: true }) }} style={{ cursor: "pointer", color: "white", position: "relative", left: "32%", top: "55%" }}>Bank</span>
+                <Link to="/marketplace/bank/"><span onClick={() => { this.setState({ bank: true }) }} style={{ cursor: "pointer", color: "white", position: "relative", left: "32%", top: "60px" }}>Bank</span>
                 </Link>
-                <Link to="/marketplace/rewards/"><span onClick={() => { this.setState({ bank: false }) }} style={{ color: "white", position: "relative", left: "15%", top: "70%", cursor: "pointer" }}>Merchant</span></Link>
+                <Link to="/marketplace/rewards/"><span onClick={() => { this.setState({ bank: false }) }} style={{ color: "white", position: "relative", left: "15%",top: "80px", cursor: "pointer" }}>Merchant</span></Link>
               </> : null
             }
 

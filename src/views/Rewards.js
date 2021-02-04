@@ -204,7 +204,7 @@ View All</Button>
         </div> :
           <div className="maindiv" style={{ display: "flex" }}>
             <h5 style={{ fontFamily: 'Nunito', fontWeight: "bold", zIndex: "2", fontSize: "25px", color: "rgba(0, 0, 0, 0.7)", position: "absolute", marginTop: "-39px", marginLeft: "2%" }}>Insights</h5>
-            <Button style={{ fontFamily: 'Nunito', color: "gray", backgroundColor: "white", borderRadius: "20px", borderColor: "gray", position: "absolute", marginTop: "-45px", marginLeft: "142px", fontWeight: "700", fontSize: "0.7rem" }}><b>+</b> Expand</Button>
+            {/* <Button style={{ fontFamily: 'Nunito', color: "gray", backgroundColor: "white", borderRadius: "20px", borderColor: "gray", position: "absolute", marginTop: "-45px", marginLeft: "142px", fontWeight: "700", fontSize: "0.7rem" }}><b>+</b> Expand</Button> */}
             <div className="subdiv1" style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "540px", marginLeft: '1%' }}>
               <Icon style={{ marginLeft: '50%', marginTop: '50%', color: "#d4d1cb" }} name="lock" size="big" />
 

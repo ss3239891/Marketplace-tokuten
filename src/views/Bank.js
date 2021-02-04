@@ -4,7 +4,7 @@ import {
   Row,
   
   Card,
-  CardBody
+  CardBody,Button
 } from "shards-react";
 import Slider from "react-slick";
   import PageTitle from "../components/common/PageTitle";
@@ -87,6 +87,7 @@ class Bank extends React.Component {
 };
 }
 
+
     render() {
       const {
         PostsListOne,
@@ -106,7 +107,7 @@ class Bank extends React.Component {
           {
             breakpoint: 1500,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 3,
               slidesToScroll: 1,
               infinite: true,
               dots: true,
@@ -139,32 +140,37 @@ class Bank extends React.Component {
             <Container style={{backgroundColor:"#e5e5e5" }}fluid className="main-content-container px-4">
             {/* Page Header */}
             <Row noGutters className="page-header py-4">
-              <PageTitle sm="4" title="Marketplace" className="text-sm-left title-maine" />
-            </Row>
+          <PageTitle  sm="4" title="Marketplace" className="text-sm-left title-maine " />
+
+        </Row>
+        <hr style={{ width: '141px', border: '1px solid rgba(0, 0, 0, 0.4)', marginLeft: '1.5%', marginTop: '0px' }}></hr>
     <div style={{display:"flex"}}>
           
     <RadioButtons/>
     <div style ={{display: 'block'}}>
-    <span className="text-bank"> Trending Rewards in Hong Kong</span>
-    <Slider style ={{width:"1132px",marginLeft:"59px",height:"343px" ,borderRadius:"10px",borderBottom:"none"}}{...settings}>
+   
+      <span className="text-bank"> Trending Rewards in Hong Kong</span>
+     
+     
+    <Slider style ={{width:"1050px",marginLeft:"59px",height:"343px" ,borderRadius:"10px",borderBottom:"none"}}{...settings}>
   
         {PostsListOne.map((post, idx) => (
         
               <Card   small className="card-pose card-post--1">
                 <div
                   className="card-post__image"
-                  style={{ backgroundImage: `url(${post.backgroundImage})`}}
+                  style={{ backgroundImage: `url(${post.backgroundImage})` }}
                 >
-                  
-                
+
+
                 </div>
-                <CardBody style={{height:window.innerWidth<768?"126px":null,paddingTop:window.innerWidth?"2px":null}}>
-                  <h5 className="card-title" style={{fontSize:window.innerWidth<768?"13px":null}}>
-                   
-                    1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
-                   
+                <CardBody style={{ height: window.innerWidth < 768 ? "126px" : null, paddingTop: window.innerWidth ? "10px" : null }}>
+                  <h5 className="card-title" style={{ fontSize: window.innerWidth < 768 ? "13px" : null }}>
+                    <a href="#" className="text-fiord-blue">
+                      1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
+                    </a>
                   </h5>
-                 
+
                 </CardBody>
               </Card>
           
@@ -173,25 +179,25 @@ class Bank extends React.Component {
         </Slider>
 <div className="divider"></div>
         <span className="text-bank" style={{width:"370px"}}>Recommended Rewards for Delta Bank</span>
-    <Slider style ={{width:"1132px",marginLeft:"59px",height:"343px" ,borderRadius:"10px",borderBottom:"none"}}{...settings}>
+    <Slider style ={{width:"1050px",marginLeft:"59px",height:"343px" ,borderRadius:"10px",borderBottom:"none"}}{...settings}>
   
         {PostsListOne.map((post, idx) => (
         
               <Card   small className="card-pose card-post--1">
                 <div
                   className="card-post__image"
-                  style={{ backgroundImage: `url(${post.backgroundImage})`}}
+                  style={{ backgroundImage: `url(${post.backgroundImage})` }}
                 >
-                  
-                
+
+
                 </div>
-                <CardBody style={{height:window.innerWidth<768?"126px":null,paddingTop:window.innerWidth?"2px":null}}>
-                  <h5 className="card-title" style={{fontSize:window.innerWidth<768?"13px":null}}>
-                  
-                    1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
-                   
+                <CardBody style={{ height: window.innerWidth < 768 ? "126px" : null, paddingTop: window.innerWidth ? "10px" : null }}>
+                  <h5 className="card-title" style={{ fontSize: window.innerWidth < 768 ? "13px" : null }}>
+                    <a href="#" className="text-fiord-blue">
+                      1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
+                    </a>
                   </h5>
-                 
+
                 </CardBody>
               </Card>
           
@@ -203,6 +209,7 @@ class Bank extends React.Component {
            </Container>
        
         )
+        
     }
 }
 

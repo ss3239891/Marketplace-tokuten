@@ -115,9 +115,10 @@ color: #FFFFFF;
     /* Vector */
 
 position: relative;
-left:46.30%;
+left:68.30%;
 right: -33.33%;
 top: 37.17%;
+margin-top: 64px;
 bottom: -12.5%;
 cursor: pointer;
 
@@ -180,7 +181,7 @@ color: #000000;
 height: 23px;
 position: absolute;
 left:327px;
-margin-top: 9px;
+margin-top: 14px;
 z-index: 2;
 
 font-family: 'Nunito' sans-serif;

@@ -9,3 +9,4 @@ display: flex;
 align-items: center;
 letter-spacing: 0.005em;
   }
+  input:focus::-webkit-input-placeholder { color:transparent; }

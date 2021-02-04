@@ -2205,6 +2205,9 @@ color: black !important;
     .slick-prev:before, .slick-next:before {
  font-size: 35px !important;
  color: gray !important;
+ /* background: transparent !important;
+ background-color: gray !important;
+ border-radius: 50% !important; */
     }
    }
   .card > .list-group:first-child .list-group-item:first-child {
