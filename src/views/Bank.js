@@ -1,10 +1,13 @@
 import React from 'react'
+import firebase from "firebase"
+import {rewardRef} from "../firebase/firebase";
+  
 import {
   Container,
   Row,
   
   Card,
-  CardBody,Button
+  CardBody
 } from "shards-react";
 import Slider from "react-slick";
   import PageTitle from "../components/common/PageTitle";
@@ -13,87 +16,50 @@ import RadioButtons from '../components/components-overview/RadioButtons';
 class Bank extends React.Component {
   constructor(props) {
     super(props);
-  this.state = {
-  PostsListOne: [
-    {
-      backgroundImage: require("../images/content-management/1.jpeg"),
-      category: "Business",
-      categoryTheme: "dark",
-      author: "Anna Kunis",
-      authorAvatar: require("../images/avatars/1.jpg"),
-      title: "Conduct at an replied removal an amongst",
-      body:
-        "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. But in for determine what would see...",
-      date: "28 February 2019"
-    },
-    {
-      backgroundImage: require("../images/content-management/1.jpeg"),
-      category: "Business",
-      categoryTheme: "dark",
-      author: "Anna Kunis",
-      authorAvatar: require("../images/avatars/1.jpg"),
-      title: "Conduct at an replied removal an amongst",
-      body:
-        "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. But in for determine what would see...",
-      date: "28 February 2019"
-    },
-    {
-      backgroundImage: require("../images/content-management/1.jpeg"),
-      category: "Business",
-      categoryTheme: "dark",
-      author: "Anna Kunis",
-      authorAvatar: require("../images/avatars/1.jpg"),
-      title: "Conduct at an replied removal an amongst",
-      body:
-        "However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. But in for determine what would see...",
-      date: "28 February 2019"
-    },
-    {
-      backgroundImage: require("../images/content-management/2.jpeg"),
-      category: "Travel",
-      categoryTheme: "info",
-      author: "James Jamerson",
-      authorAvatar: require("../images/avatars/2.jpg"),
-      title: "Off tears are day blind smile alone had ready",
-      body:
-        "Is at purse tried jokes china ready decay an. Small its shy way had woody downs power. To denoting admitted speaking learning my...",
-      date: "29 February 2019"
-    },
-    {
-      backgroundImage: require("../images/content-management/3.jpeg"),
-      category: "Technology",
-      categoryTheme: "royal-blue",
-      author: "Jimmy Jackson",
-      authorAvatar: require("../images/avatars/2.jpg"),
-      title: "Difficult in delivered extensive at direction",
-      body:
-        "Is at purse tried jokes china ready decay an. Small its shy way had woody downs power. To denoting admitted speaking learning my...",
-      date: "29 February 2019"
-    },
-    {
-      backgroundImage: require("../images/content-management/4.jpeg"),
-      category: "Business",
-      categoryTheme: "warning",
-      author: "John James",
-      authorAvatar: require("../images/avatars/3.jpg"),
-      title: "It so numerous if he may outlived disposal",
-      body:
-        "How but sons mrs lady when. Her especially are unpleasant out alteration continuing unreserved ready road market resolution...",
-      date: "29 February 2019"
-    }
-  ],
+  
+    this.onDataChange = this.onDataChange.bind(this);
 
- 
-};
-}
+    this.state = {
+   data: [],
+   
+    };
+  }
 
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if (firebaseUser){
+
+            rewardRef.on("value", this.onDataChange);
+        }
+    })
+  }
+
+
+  onDataChange(items) {
+    let posts = [];
+
+  items.forEach((item) => {
+      let key = item.key;
+      let data = item.val();
+    posts.push({
+        key: key,
+        title: data.title,
+        image_url: data.image_url,
+        desc : data.description
+      });
+    });
+
+    this.setState({
+   data: posts,
+    });
+  }
 
     render() {
       const {
-        PostsListOne,
-       
+    data
       } = this.state;
       const settings = {
+        
         className: "center",
         infinite: true,
         marginLeft: "-46px",
@@ -154,12 +120,12 @@ class Bank extends React.Component {
      
     <Slider style ={{width:"1050px",marginLeft:"59px",height:"343px" ,borderRadius:"10px",borderBottom:"none"}}{...settings}>
   
-        {PostsListOne.map((post, idx) => (
+        {data.map((post, idx) => (
         
               <Card   small className="card-pose card-post--1">
                 <div
                   className="card-post__image"
-                  style={{ backgroundImage: `url(${post.backgroundImage})` }}
+                  style={{ backgroundImage: `url('${post.image_url}')` }}
                 >
 
 
@@ -167,8 +133,9 @@ class Bank extends React.Component {
                 <CardBody style={{ height: window.innerWidth < 768 ? "126px" : null, paddingTop: window.innerWidth ? "10px" : null }}>
                   <h5 className="card-title" style={{ fontSize: window.innerWidth < 768 ? "13px" : null }}>
                     <a href="#" className="text-fiord-blue">
-                      1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
+                     {post.title}
                     </a>
+                    <p>{post.desc}</p>
                   </h5>
 
                 </CardBody>
@@ -181,22 +148,24 @@ class Bank extends React.Component {
         <span className="text-bank" style={{width:"370px"}}>Recommended Rewards for Delta Bank</span>
     <Slider style ={{width:"1050px",marginLeft:"59px",height:"343px" ,borderRadius:"10px",borderBottom:"none"}}{...settings}>
   
-        {PostsListOne.map((post, idx) => (
+    {data.map((post, idx) => (
         
-              <Card   small className="card-pose card-post--1">
-                <div
-                  className="card-post__image"
-                  style={{ backgroundImage: `url(${post.backgroundImage})` }}
-                >
+        <Card   small className="card-pose card-post--1">
+          <div
+            className="card-post__image"
+            style={{ backgroundImage: `url('${post.image_url}')` }}
+          >
 
 
-                </div>
-                <CardBody style={{ height: window.innerWidth < 768 ? "126px" : null, paddingTop: window.innerWidth ? "10px" : null }}>
-                  <h5 className="card-title" style={{ fontSize: window.innerWidth < 768 ? "13px" : null }}>
-                    <a href="#" className="text-fiord-blue">
-                      1. Buy a yearly subscription at Armor Fitness & receive 40% cashback
-                    </a>
-                  </h5>
+          </div>
+          <CardBody style={{ height: window.innerWidth < 768 ? "126px" : null, paddingTop: window.innerWidth ? "10px" : null }}>
+            <h5 className="card-title" style={{ fontSize: window.innerWidth < 768 ? "13px" : null }}>
+              <a href="#" className="text-fiord-blue">
+               {post.title}
+              </a>
+              <p>{post.desc}</p>
+            </h5>
+
 
                 </CardBody>
               </Card>

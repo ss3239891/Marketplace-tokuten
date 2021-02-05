@@ -5,7 +5,7 @@ import { NavItem, NavLink } from "shards-react";
 import { Link } from "react-router-dom"
 
 
-const SidebarNavItem = ({ item,props }) => (
+const SidebarNavItem = ({ item,bank }) => (
   <NavItem style ={{display:"flex"}}>
     {/* <NavLink style ={{color:"#d3d3d3"}} tag={RouteNavLink} to={item.to}>
       {item.htmlBefore && (
@@ -15,7 +15,7 @@ const SidebarNavItem = ({ item,props }) => (
         />
       )}
  {
-       props.bank==="false"?<div><span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >Home</span></div>
+       bank==="false"?<span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >Home</span>
     :
      
       item.title && <span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >{item.title}</span>
@@ -42,7 +42,8 @@ const SidebarNavItem = ({ item,props }) => (
         />
       )}
       {/* {
-       props.bank==="false"?<div><span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >Home</span></div>
+       bank==="false"?<span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >Home</span>
+      
     :
      
       item.title && <span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >{item.title}</span>
@@ -63,7 +64,7 @@ const SidebarNavItem = ({ item,props }) => (
              
               
     </NavLink>:
-    <NavLink style ={{color:"#d3d3d3"}} tag={RouteNavLink} to={item.to}>
+    <NavLink style ={{color:"#d3d3d3",marginTop:'10px'}} tag={RouteNavLink} to={item.to}>
     {item.htmlBefore && (
       <div
         className="d-inline-block item-icon-wrapper"
@@ -71,8 +72,14 @@ const SidebarNavItem = ({ item,props }) => (
       />
     )}
     
-    {item.title && <span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >{item.title}</span>}
-  
+    {/* {
+       bank==="false"?<div><span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >Home</span></div>
+    :
+     
+      item.title && <span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >{item.title}</span>
+    }   */}
+        {      item.title && <span style ={{fontFamily:"Nunito, sans-serif",fontStyle:"normal",lineHeight:"23px",fontWeight:"normal",letterSpacing:"0.05em",color:"#FFFFFF",marginLeft:'20px',fontWeight:'17px'}} >{item.title}</span>}
+
     {item.htmlAfter && (
       <div style={{marginLeft:'10px'}}
         className="d-inline-block item-icon-wrapper"

@@ -16,7 +16,7 @@ import rootRef from "../firebase/firebase";
 import { rewardRef } from "../firebase/firebase";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import "./create-rewards.css"
-import {Link} from 'react-router-dom';
+
 
 
 export class Page3 extends Component {
@@ -41,45 +41,14 @@ export class Page3 extends Component {
   };
 
 
-  sendingData = () => {
- 
-    this.setState({ loading: true })
-    const autoRewardId = rewardRef.push().key;
-    rewardRef.child(autoRewardId).set({
-      owner_uid: this.state.ownerUid,
-      owner_name: this.state.ownerName,
-      owner_email: this.state.ownerEmail,
-      title: this.state.title,
-      description: this.state.description,
-      image_url: this.state.image_url,
-      end_date: this.state.end_date,
-      limitedtime: this.state.limitedtime,
-      socialReward: this.state.socialReward,
+  
 
 
-
-
-    }).then(() => {
-      this.setState({ message: "Reward created successfully!" })
-      // console.log("message",this.state.message);
-
-    });
-    this.setState({ loading: false })
-  }
-
-  handleImageChange = e => {
-    this.setState({
-      [e.target.id]: e.target.files[0]
-
-    })
-  }
 
 
   componentDidMount() {
-   
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
-      
         console.log(firebaseUser)
 
         rootRef.child(firebaseUser.uid).on('value', snapshot => {
@@ -104,6 +73,40 @@ export class Page3 extends Component {
       }
 
     })
+    const createBtn = document.getElementById('createbtn');
+
+
+    createBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      //Uploading Image into firebase storage
+
+      const file = document.querySelector('input[type=file]').files[0];
+      const name = new Date() + '-' + file.name;
+      const ref = firebase.storage().ref('rewardImages');  //Here, 'rewardImages' is the folder name that will be created inside storage section of firebase
+      const metadata = {
+          contentType:file.type
+      };
+      const task = ref.child(name).put(file,metadata);
+      console.log(name);
+      task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
+        
+          const autoRewardId = rewardRef.push().key;
+          rewardRef.child(autoRewardId).set({
+            owner_uid: this.state.ownerUid,
+            owner_name: this.state.ownerName,
+            owner_email: this.state.ownerEmail,
+            title: this.state.title,
+            description: this.state.description,
+            image_url: url,
+            end_date: this.state.end_date,
+            limitedtime: this.state.limitedtime,
+            socialReward: this.state.socialReward,
+      
+      })
+      window.location.href="/marketplace/bank/"
+    })
+    })
   }
 
 
@@ -113,7 +116,6 @@ export class Page3 extends Component {
 
 
   render() {
-    // console.log("message1",this.state.RewardObject);
   
     return (
 
@@ -130,9 +132,9 @@ export class Page3 extends Component {
         <div class="ui tiny breadcrumb" style={{ marginTop: '20px', marginLeft: '30px', background: 'none', fontFamily: 'Nunito', fontSize: '17px' }}><div style={{ fontWeight: 'bold', textDecoration: 'underline' }} class="section">Add Details</div><Icon style={{ color: ' rgba(0, 0, 0, 0.7)', width: '50px' }} aria-hidden="true" name="chevron right" /><div style={{ fontWeight: 'normal', textDecoration: 'underline', color: 'rgba(0, 0, 0, 0.3)', fontSize: "17px" }} class=" section">Select Parameters</div></div>
 
         <React.Fragment>
-          <Form size="large"  >
+          <Form size="large" onSubmit={this.sendingData} >
             <Segment style={{ border: 'none' }} stacked>
-              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '91%', background: '#FCFCFC' }}>
+              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '95%', background: '#FCFCFC' }}>
 
 
                 <Grid columns={3}>
@@ -154,7 +156,7 @@ export class Page3 extends Component {
                 </Grid>
 
               </div>
-              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '91%', marginTop: '10px', background: '#FCFCFC' }}>
+              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '95%', marginTop: '10px', background: '#FCFCFC' }}>
 
                 <Grid columns={3}>
                   <Grid.Row>
@@ -192,7 +194,7 @@ export class Page3 extends Component {
                     </Grid.Column>
                   </Grid.Row>
                 </div>
-                <div className="subdiv1" style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "110px", width: '43%', marginTop: '10px', background: '#FCFCFC' }}>
+                <div className="subdiv1" style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "110px", width: '47%', marginTop: '10px', background: '#FCFCFC' }}>
 
                   <Grid.Row>
                     <Grid.Column>
@@ -200,7 +202,7 @@ export class Page3 extends Component {
 
                     </Grid.Column>
                     <Grid.Column style={{ borderBottom: ' 0.1px solid #C4C4C4', width: '50%' }}>
-                      <Input className='newinput' transparent style={{ marginTop: '35px', width: '60%', marginLeft: '20px' }} type="file" className="imag" id="image_url" accept="image/png, image/jpeg" onChange={this.handleImageChange} required />
+                      <Input className='newinput'id="photo" transparent style={{ marginTop: '35px', width: '60%', marginLeft: '20px' }} type="file" className="imag" id="image_url" accept="image/png, image/jpeg"  required />
 
                     </Grid.Column>
                   </Grid.Row>
@@ -215,19 +217,18 @@ export class Page3 extends Component {
                 <Checkbox className="check" style={{ marginTop: '40px', marginLeft: '20px', fontSize: '17px', fontWeight: 'bold' }} onChange={() => this.setState({ limitedtime: true })} label="Limited Time offer" ></Checkbox> <br></br>
                 <Checkbox  className="check" style={{ marginTop: '30px', marginLeft: '20px' }} onChange={() => this.setState({ socialReward: true })} label="Social Reward" ></Checkbox>
               </div>
-
-              <Link to="/create-rewards-4" style={{textDecoration:'none'}}>
               <Button
-                style={{ backgroundColor: 'black', color: '#FFFFFF', fontSize: '17px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Nunito', marginLeft: '350px', width: '35%', marginTop: '80px', marginBottom: '20px', borderRadius: '10px' }}
+                style={{ backgroundColor: 'black', color: '#FFFFFF', fontSize: '17px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Nunito', marginLeft: '420px', width: '35%', marginTop: '80px', marginBottom: '20px', borderRadius: '10px' }}
                 fluid
                 size="large"
-               onClick={this.sendingData}
+               
                 loading={this.state.loading}
+
+                id="createbtn"
 
               >
                 Save Details
                 </Button>
-              </Link>
             </Segment>
           </Form>
 

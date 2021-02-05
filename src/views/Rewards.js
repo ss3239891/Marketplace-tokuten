@@ -155,7 +155,7 @@ class Rewards extends React.Component {
 
 
         <div>
-          <div style={{display:'flex'}}>
+          <div style={{ display: 'flex' }}>
             <h5 style={{ marginLeft: '2%' }} className="subtit">Live Rewards</h5>
 
 
@@ -206,14 +206,14 @@ View All</Button>
             <h5 style={{ fontFamily: 'Nunito', fontWeight: "bold", zIndex: "2", fontSize: "25px", color: "rgba(0, 0, 0, 0.7)", position: "absolute", marginTop: "-39px", marginLeft: "2%" }}>Insights</h5>
             {/* <Button style={{ fontFamily: 'Nunito', color: "gray", backgroundColor: "white", borderRadius: "20px", borderColor: "gray", position: "absolute", marginTop: "-45px", marginLeft: "142px", fontWeight: "700", fontSize: "0.7rem" }}><b>+</b> Expand</Button> */}
             <div className="subdiv1" style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "540px", marginLeft: '1%' }}>
-              <Icon style={{ marginLeft: '50%', marginTop: '50%', color: "#d4d1cb" }} name="lock" size="big" />
+              <Icon style={{ marginLeft: '47%', marginTop: '50%', color: "#d4d1cb" }} name="lock" size="big" />
 
             </div>
             <h5 style={{ fontFamily: 'Nunito', fontWeight: "bold", zIndex: "2", fontSize: "25px", color: "rgba(0, 0, 0, 0.7)", position: "absolute", marginTop: "-39px", marginLeft: '52%' }}>Recommendations</h5>
             <div className="subdiv2" style={{ dispaly: "block", marginLeft: "24px" }} >
-              <div className="subdivchild1" style={{ width: "102%", height: "251px", border: "1px solid #c4C4c4", borderRadius: "20px" }}>            <Icon style={{ marginLeft: '50%', marginTop: '25%', color: "#d4d1cb" }} name="lock" size="big" />
+              <div className="subdivchild1" style={{ width: "102%", height: "251px", border: "1px solid #c4C4c4", borderRadius: "20px" }}>            <Icon style={{ marginLeft: '47%', marginTop: '25%', color: "#d4d1cb" }} name="lock" size="big" />
               </div>
-              <div className="subdivchild2" style={{ width: "102%", height: "273px", marginTop: "12px", border: "1px solid #c4C4c4", borderRadius: "20px" }}>            <Icon style={{ marginLeft: '50%', marginTop: '25%', color: "#d4d1cb" }} name="lock" size="big" />
+              <div className="subdivchild2" style={{ width: "102%", height: "273px", marginTop: "12px", border: "1px solid #c4C4c4", borderRadius: "20px" }}>            <Icon style={{ marginLeft: '47%', marginTop: '25%', color: "#d4d1cb" }} name="lock" size="big" />
               </div>
             </div>
           </div>
