@@ -16,7 +16,7 @@ import rootRef from "../firebase/firebase";
 import { rewardRef } from "../firebase/firebase";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import "./create-rewards.css"
-
+import  {Link} from 'react-router-dom';
 
 
 export class Page3 extends Component {
@@ -217,6 +217,7 @@ export class Page3 extends Component {
                 <Checkbox className="check" style={{ marginTop: '40px', marginLeft: '20px', fontSize: '17px', fontWeight: 'bold' }} onChange={() => this.setState({ limitedtime: true })} label="Limited Time offer" ></Checkbox> <br></br>
                 <Checkbox  className="check" style={{ marginTop: '30px', marginLeft: '20px' }} onChange={() => this.setState({ socialReward: true })} label="Social Reward" ></Checkbox>
               </div>
+              <Link style={{textDecoration:'none'}} to="/create-rewards-4/">
               <Button
                 style={{ backgroundColor: 'black', color: '#FFFFFF', fontSize: '17px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Nunito', marginLeft: '420px', width: '35%', marginTop: '80px', marginBottom: '20px', borderRadius: '10px' }}
                 fluid
@@ -229,6 +230,7 @@ export class Page3 extends Component {
               >
                 Save Details
                 </Button>
+              </Link>
             </Segment>
           </Form>
 

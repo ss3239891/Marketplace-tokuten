@@ -279,7 +279,7 @@ letter-spacing: 0.005em;
 color: #AAAAAA;
 
 }
-.slick-prev:before {
+/* .slick-prev:before {
     content: "<" !important ;
     font-size: 20px !important;
     font-weight: bold !important;
@@ -289,4 +289,16 @@ color: #AAAAAA;
     content: ">" !important;
     font-size: 20px !important;
     font-weight: bold !important;
-  }  
+  }   */
+  .slick-prev::before {
+    content: "\f104" !important;
+  font: 40px/1 'FontAwesome' !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
+.slick-next::before {
+    content: "\f105" !important;
+  font: 40px/1 'FontAwesome' !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+}
