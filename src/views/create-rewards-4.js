@@ -1,20 +1,21 @@
 
 import React, { Component } from 'react'
 import {
-  
+
   Form,
 
 
 
   Label,
   Checkbox, Grid,
-   Button,Icon
+  Button, Icon
 } from "semantic-ui-react";
 import "./create-rewards.css"
 import "typeface-nunito";
 import firebase from "firebase";
 import rootRef from "../firebase/firebase";
 import { rewardRef } from "../firebase/firebase";
+import {Link} from 'react-router-dom';
 export class Page4 extends Component {
 
   state = {
@@ -26,8 +27,8 @@ export class Page4 extends Component {
     ownerEmail: "",
     ownerUid: "",
     ownerName: "",
-    RewardObject:[],
-    Purchasemethod:""
+    RewardObject: [],
+    Purchasemethod: ""
   }
 
 
@@ -48,7 +49,7 @@ export class Page4 extends Component {
   };
 
 
-  
+
   sendingData = () => {
     this.setState({ loading: true })
     const autoRewardId = rewardRef.push().key;
@@ -61,15 +62,15 @@ export class Page4 extends Component {
       Age: this.state.Age,
       terms: this.state.terms,
       loyality: this.state.loyality,
-      
-      
-      
+
+
+
 
 
 
     }).then(() => {
       this.setState({ message: "Reward created successfully!" })
-      console.log("message",this.state.message)
+      console.log("message", this.state.message)
     });
     this.setState({ loading: false })
   }
@@ -94,6 +95,7 @@ export class Page4 extends Component {
 
 
           });
+          // window.location.href="/marketplace/bank/"
 
         });
 
@@ -102,29 +104,29 @@ export class Page4 extends Component {
     })
   }
   render() {
-console.log("purchasemethod",this.state.Purchasemethod);
+    console.log("purchasemethod", this.state.Purchasemethod);
     return (
       <div style={{ paddingLeft: '20px' }}>
 
         {/* <Header as="h2" color="black" textAlign="center" style={{ position: "relative", left: "28%" }}>About You</Header> */}
-        <div class="ui breadcrumb"  style={{ marginTop: '20px', marginLeft: '10px', background: 'none',fontFamily:'Nunito',fontSize:'25px' }}><div style={{ fontWeight: 'bold' }} class="section">Rewards</div><Icon style={{color:' rgba(0, 0, 0, 0.7)',width:'50px'}} aria-hidden="true" name="chevron right" /><div style={{ fontWeight: 'normal' }} class=" section">Create Reward</div> <Icon style={{color:' rgba(0, 0, 0, 0.7)',width:'50px'}} aria-hidden="true" name="chevron right" /><div style={{ fontWeight: 'normal' }} class=" section">Scroll Offer</div></div>
+        <div class="ui breadcrumb" style={{ marginTop: '20px', marginLeft: '10px', background: 'none', fontFamily: 'Nunito', fontSize: '25px' }}><div style={{ fontWeight: 'bold' }} class="section">Rewards</div><Icon style={{ color: ' rgba(0, 0, 0, 0.7)', width: '50px' }} aria-hidden="true" name="chevron right" /><div style={{ fontWeight: 'normal' }} class=" section">Create Reward</div> <Icon style={{ color: ' rgba(0, 0, 0, 0.7)', width: '50px' }} aria-hidden="true" name="chevron right" /><div style={{ fontWeight: 'normal' }} class=" section">Scroll Offer</div></div>
         <hr style={{ width: '510px', border: '1.1px solid rgba(0, 0, 0, 0.4)', marginLeft: '25px', marginTop: '0px' }}></hr>
-        <div class="ui tiny breadcrumb"  style={{marginTop:'20px',marginLeft:'20px',background:'none',fontFamily:'Nunito',fontSize:'17px'}}><div style={{fontWeight:'bold',textDecoration:'underline'}} class="section">Add Details</div><Icon style={{color:' rgba(0, 0, 0, 0.7)',width:'50px'}} aria-hidden="true" name="chevron right"/><div style={{fontWeight:'bold',textDecoration:'underline',color:'#000000',fontSize:"17px"}} class=" section">Select Parameters</div></div>
+        <div class="ui tiny breadcrumb" style={{ marginTop: '20px', marginLeft: '20px', background: 'none', fontFamily: 'Nunito', fontSize: '17px' }}><div style={{ fontWeight: 'bold', textDecoration: 'underline' }} class="section">Add Details</div><Icon style={{ color: ' rgba(0, 0, 0, 0.7)', width: '50px' }} aria-hidden="true" name="chevron right" /><div style={{ fontWeight: 'bold', textDecoration: 'underline', color: '#000000', fontSize: "17px" }} class=" section">Select Parameters</div></div>
 
         <Form >
 
-          <div className="subdiv1" style={{marginLeft:'2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "440px", width: '91%' }}>
+          <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "440px", width: '91%' }}>
 
 
             <Form.Field>
               <Grid columns={4}>
-                <Grid.Row style={{marginTop:'10px'}}>
+                <Grid.Row style={{ marginTop: '10px' }}>
                   <Grid.Column style={{ marginTop: "8px", paddingLeft: '100px' }} >
-                    <Label style={{ marginTop: "8px",background: 'none', color: 'black' }}  for="Audience">Audience</Label>
+                    <Label style={{ marginTop: "8px", background: 'none', color: 'black' }} for="Audience">Audience</Label>
                   </Grid.Column>
                   <Grid.Column>
                     <select
-                      style={{ marginTop: "8px", width: '100%', backgroundColor: '#e8e8e8',fontSize:'17px' }}
+                      style={{ marginTop: "8px", width: '100%', backgroundColor: '#e8e8e8', fontSize: '17px' }}
                       value={this.state.Audience}
 
                       onChange={this.handleChan}
@@ -149,12 +151,12 @@ console.log("purchasemethod",this.state.Purchasemethod);
               <Grid columns={4}>
                 <Grid.Row>
                   <Grid.Column style={{ marginTop: "8px", paddingLeft: '100px' }}>
-                    <Label className="label" style={{ marginTop: "8px",background: 'none', color: 'black' }} for="gender">Gender</Label>
+                    <Label className="label" style={{ marginTop: "8px", background: 'none', color: 'black' }} for="gender">Gender</Label>
 
                   </Grid.Column>
                   <Grid.Column>
                     <select
-                      style={{ marginTop: "8px", width: '100%', backgroundColor: '#e8e8e8',fontSize:'17px' }}
+                      style={{ marginTop: "8px", width: '100%', backgroundColor: '#e8e8e8', fontSize: '17px' }}
                       value={this.state.gender}
 
                       onChange={this.handleChan}
@@ -176,11 +178,11 @@ console.log("purchasemethod",this.state.Purchasemethod);
               <Grid columns={4}>
                 <Grid.Row>
                   <Grid.Column style={{ marginTop: "8px", paddingLeft: '100px' }}>
-                    <Label className="label" style={{ marginTop: "8px",background: 'none', color: 'black' }}  for="Age">Age</Label>
+                    <Label className="label" style={{ marginTop: "8px", background: 'none', color: 'black' }} for="Age">Age</Label>
                   </Grid.Column>
                   <Grid.Column>
                     <select
-                      style={{ marginTop: "8px", width: '100%', backgroundColor: '#e8e8e8',fontSize:'17px' }}
+                      style={{ marginTop: "8px", width: '100%', backgroundColor: '#e8e8e8', fontSize: '17px' }}
                       value={this.state.Age}
 
                       onChange={this.handleChan}
@@ -203,12 +205,12 @@ console.log("purchasemethod",this.state.Purchasemethod);
               <Grid columns={3}>
                 <Grid.Row>
                   <Grid.Column style={{ marginTop: "8px", paddingLeft: '100px' }}>
-                    <Label className="label" style={{ marginTop: "8px",background: 'none', color: 'black' }} >Terms & Conditions</Label>
+                    <Label className="label" style={{ marginTop: "8px", background: 'none', color: 'black' }} >Terms & Conditions</Label>
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Input className="newinput" transparent
                       onChange={this.handleChange}
-                      style={{  marginTop: "15px",  width: '100%' }}
+                      style={{ marginTop: "15px", width: '100%' }}
                       id="terms"
                       fluid
 
@@ -223,21 +225,21 @@ console.log("purchasemethod",this.state.Purchasemethod);
             </Form.Field>
             <hr></hr>
 
-            <Checkbox className="check"   style={{ marginTop: "10px", paddingLeft: '70px',fontFamily:'Nunito',fontSize:'17px' }} onChange={() => this.setState({ loyality: true })} label="Loyality Members" ></Checkbox>
+            <Checkbox className="check" style={{ marginTop: "10px", paddingLeft: '70px', fontFamily: 'Nunito', fontSize: '17px' }} onChange={() => this.setState({ loyality: true })} label="Loyality Members" ></Checkbox>
           </div>
 
           <Form.Field>
 
-            <p style={{marginLeft:'30px', marginTop: '30px', fontWeight: 'normal', textDecoration: 'underline',color:'#000000',fontSize:'17px' }}>Method of purchase: </p>
-            <div className="subdiv1" style={{ marginLeft:'2%',borderRadius: "20px", border: "1px solid #c4C4c4", height: "370px", width: '91%' }}>
+            <p style={{ marginLeft: '30px', marginTop: '30px', fontWeight: 'normal', textDecoration: 'underline', color: '#000000', fontSize: '17px' }}>Method of purchase: </p>
+            <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "370px", width: '91%' }}>
 
               <Grid columns={5} style={{ marginLeft: '20px', marginTop: '90px' }}>
                 <Grid.Row>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon onClick={() => this.setState({Purchasemethod:"QR code"})} style={{cursor:'pointer',backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="qrcode" size="huge" />
+                      <Icon onClick={() => this.setState({ Purchasemethod: "QR code" })} style={{ cursor: 'pointer', backgroundColor: "#EFEFF0", borderRadius: "50%", height: '120px', width: '120px', paddingTop: '14%', marginTop: '0px', marginLeft: '30px' }} name="qrcode" size="huge" />
 
-                      <Label className="label2" style={{background: 'none', marginTop:'20px',marginLeft:'40px'}} for="radioGroup">Qr code</Label>
+                      <Label className="label2" style={{ background: 'none', marginTop: '20px', marginLeft: '40px' }} for="radioGroup">Qr code</Label>
                       <br />
                       {/* <Radio
 
@@ -252,9 +254,9 @@ console.log("purchasemethod",this.state.Purchasemethod);
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon onClick={() => this.setState({Purchasemethod:"QR code"})} style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="code" size="huge" />
+                      <Icon onClick={() => this.setState({ Purchasemethod: "QR code" })} style={{ backgroundColor: "#EFEFF0", borderRadius: "50%", height: '120px', width: '120px', paddingTop: '14%', marginTop: '0px', marginLeft: '30px' }} name="code" size="huge" />
 
-                      <Label className="label2" style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'20px'}} for="radioGroup">Voucher code</Label>
+                      <Label className="label2" style={{ background: 'none', color: 'black', marginTop: '20px', marginLeft: '20px' }} for="radioGroup">Voucher code</Label>
                       <br />
                       {/* <Radio
 
@@ -269,9 +271,9 @@ console.log("purchasemethod",this.state.Purchasemethod);
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon onClick={() => this.setState({Purchasemethod:"Booking System"})} style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="calendar outline" size="huge" />
+                      <Icon onClick={() => this.setState({ Purchasemethod: "Booking System" })} style={{ backgroundColor: "#EFEFF0", borderRadius: "50%", height: '120px', width: '120px', paddingTop: '14%', marginTop: '0px', marginLeft: '30px' }} name="calendar outline" size="huge" />
 
-                      <Label className="label2"  style={{ marginX: "2px" }}style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'15px'}}  for="radioGroup">Booking System</Label>
+                      <Label className="label2" style={{ marginX: "2px" }} style={{ background: 'none', color: 'black', marginTop: '20px', marginLeft: '15px' }} for="radioGroup">Booking System</Label>
                       <br />
                       {/* <Radio
 
@@ -285,9 +287,9 @@ console.log("purchasemethod",this.state.Purchasemethod);
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon onClick={() => this.setState({Purchasemethod:"External Link"})} style={{backgroundColor:"#EFEFF0" ,borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="linkify" size="huge" />
+                      <Icon onClick={() => this.setState({ Purchasemethod: "External Link" })} style={{ backgroundColor: "#EFEFF0", borderRadius: "50%", height: '120px', width: '120px', paddingTop: '14%', marginTop: '0px', marginLeft: '30px' }} name="linkify" size="huge" />
 
-                      <Label className="label2" style={{ marginX: "2px" }} style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'20px'}} for="radioGroup">External Link</Label>
+                      <Label className="label2" style={{ marginX: "2px" }} style={{ background: 'none', color: 'black', marginTop: '20px', marginLeft: '20px' }} for="radioGroup">External Link</Label>
                       <br />
                       {/* <Radio
 
@@ -301,9 +303,9 @@ console.log("purchasemethod",this.state.Purchasemethod);
                   </Grid.Column>
                   <Grid.Column>
                     <Form.Field>
-                    <Icon onClick={() => this.setState({Purchasemethod:"Merchant Shop"})} style={{backgroundColor:"black" ,color:"white",borderRadius:"50%",height:'120px',width:'120px',paddingTop: '14%' ,marginTop:'0px',marginLeft:'30px'}} name="home" size="huge" />
+                      <Icon onClick={() => this.setState({ Purchasemethod: "Merchant Shop" })} style={{ backgroundColor: "black", color: "white", borderRadius: "50%", height: '120px', width: '120px', paddingTop: '14%', marginTop: '0px', marginLeft: '30px' }} name="home" size="huge" />
 
-                      <Label className="label2"  style={{ marginX: "2px" }} style={{background: 'none', color: 'black',marginTop:'20px',marginLeft:'15px'}} for="radioGroup">Merchant Shop</Label>
+                      <Label className="label2" style={{ marginX: "2px" }} style={{ background: 'none', color: 'black', marginTop: '20px', marginLeft: '15px' }} for="radioGroup">Merchant Shop</Label>
                       <br />
                       {/* <Radio
 
@@ -321,12 +323,15 @@ console.log("purchasemethod",this.state.Purchasemethod);
           </Form.Field>
 
         </Form>
+        <Link to="/marketplace/bank/">
 
-        <Button className="button" style={{ backgroundColor: 'black',color:'#FFFFFF', fontSize:'17px',fontWeight:'normal',fontStyle:'normal' ,fontFamily:'Nunito', marginLeft: '350px', width: '35%', marginTop: '80px',marginBottom:'20px',borderRadius:'10px',
-      
-      }}
-      onClick={this.sendingData}>Create Reward</Button>
+          <Button className="button" style={{
+            backgroundColor: 'black', color: '#FFFFFF', fontSize: '17px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Nunito', marginLeft: '350px', width: '35%', marginTop: '80px', marginBottom: '20px', borderRadius: '10px',
 
+          }}
+            onClick={this.sendingData}>Create Reward</Button>
+
+        </Link>
       </div>
     )
   }

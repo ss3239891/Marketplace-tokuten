@@ -104,7 +104,7 @@ export class Page3 extends Component {
             socialReward: this.state.socialReward,
       
       })
-      window.location.href="/marketplace/bank/"
+      window.location.href="/create-rewards-4"
     })
     })
   }
@@ -134,7 +134,7 @@ export class Page3 extends Component {
         <React.Fragment>
           <Form size="large" onSubmit={this.sendingData} >
             <Segment style={{ border: 'none' }} stacked>
-              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '95%', background: '#FCFCFC' }}>
+              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '91%', background: '#FCFCFC' }}>
 
 
                 <Grid columns={3}>
@@ -156,7 +156,7 @@ export class Page3 extends Component {
                 </Grid>
 
               </div>
-              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '95%', marginTop: '10px', background: '#FCFCFC' }}>
+              <div className="subdiv1" style={{ marginLeft: '2%', borderRadius: "20px", border: "1px solid #c4C4c4", height: "120px", width: '91%', marginTop: '10px', background: '#FCFCFC' }}>
 
                 <Grid columns={3}>
                   <Grid.Row>
@@ -194,7 +194,7 @@ export class Page3 extends Component {
                     </Grid.Column>
                   </Grid.Row>
                 </div>
-                <div className="subdiv1" style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "110px", width: '47%', marginTop: '10px', background: '#FCFCFC' }}>
+                <div className="subdiv1" style={{ borderRadius: "20px", border: "1px solid #c4C4c4", height: "110px", width: '43%', marginTop: '10px', background: '#FCFCFC' }}>
 
                   <Grid.Row>
                     <Grid.Column>
@@ -217,10 +217,9 @@ export class Page3 extends Component {
                 <Checkbox className="check" style={{ marginTop: '40px', marginLeft: '20px', fontSize: '17px', fontWeight: 'bold' }} onChange={() => this.setState({ limitedtime: true })} label="Limited Time offer" ></Checkbox> <br></br>
                 <Checkbox  className="check" style={{ marginTop: '30px', marginLeft: '20px' }} onChange={() => this.setState({ socialReward: true })} label="Social Reward" ></Checkbox>
               </div>
-              <Link style={{textDecoration:'none'}} to="/create-rewards-4/">
+              <Link style={{textDecoration:'none'}} to="/create-rewards-4">
               <Button
-                style={{ backgroundColor: 'black', color: '#FFFFFF', fontSize: '17px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Nunito', marginLeft: '420px', width: '35%', marginTop: '80px', marginBottom: '20px', borderRadius: '10px' }}
-                fluid
+style={{ backgroundColor: 'black', color: '#FFFFFF', fontSize: '17px', fontWeight: 'normal', fontStyle: 'normal', fontFamily: 'Nunito', marginLeft: '350px', width: '35%', marginTop: '80px', marginBottom: '20px', borderRadius: '10px' }}                fluid
                 size="large"
                
                 loading={this.state.loading}
